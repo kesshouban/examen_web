@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($year_err) && empty($descripcion_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO employees (name, year, descripcion) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO peliculas (name, year, descripcion) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
