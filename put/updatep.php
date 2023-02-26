@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $mail = $phone = "";
-$name_err = $mail_err = $phone_err = "";
+$name = $year = $descripcion = "";
+$name_err = $year_err = $descripcion_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -21,37 +21,36 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $name = $input_name;
     }
     
-    // Validate mail mail
-    $input_mail = trim($_POST["mail"]);
-    if(empty($input_mail)){
-        $mail_err = "Please enter an mail.";     
+    // Validate year year
+    $input_year = trim($_POST["year"]);
+    if(empty($input_year)){
+        $year_err = "Please enter an year.";     
     } else{
-        $mail = $input_mail;
+        $year = $input_year;
     }
     
-    // Validate phone
-    $input_phone = trim($_POST["phone"]);
-    if(empty($input_phone)){
-        $phone_err = "Please enter the phone amount.";     
-    } elseif(!ctype_digit($input_phone)){
-        $phone_err = "Please enter a positive integer value.";
-    } else{
-        $phone = $input_phone;
+    // Validate descripcion
+    $input_descripcion = trim($_POST["descripcion"]);
+    if(empty($input_descripcion)){
+        $descripcion_err = "Please enter the descripcion .";     
+    } 
+    else{
+        $descripcion = $input_descripcion;
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($mail_err) && empty($phone_err)){
+    if(empty($name_err) && empty($year_err) && empty($descripcion_err)){
         // Prepare an update statement
-        $sql = "UPDATE employees SET name=?, mail=?, phone=? WHERE id=?";
+        $sql = "UPDATE peliculas SET name=?, year=?, descripcion=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_mail, $param_phone, $param_id);
+            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_year, $param_descripcion, $param_id);
             
             // Set parameters
             $param_name = $name;
-            $param_mail = $mail;
-            $param_phone = $phone;
+            $param_year = $year;
+            $param_descripcion = $descripcion;
             $param_id = $id;
             
             // Attempt to execute the prepared statement
@@ -77,7 +76,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM employees WHERE id = ?";
+        $sql = "SELECT * FROM peliculas WHERE id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -96,8 +95,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     
                     // Retrieve individual field value
                     $name = $row["name"];
-                    $mail = $row["mail"];
-                    $phone = $row["phone"];
+                    $year = $row["year"];
+                    $descripcion = $row["descripcion"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
@@ -149,14 +148,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="invalid-feedback"><?php echo $name_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>mail</label>
-                            <textarea name="mail" class="form-control <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>"><?php echo $mail; ?></textarea>
-                            <span class="invalid-feedback"><?php echo $mail_err;?></span>
+                            <label>year</label>
+                            <textarea name="year" class="form-control <?php echo (!empty($year_err)) ? 'is-invalid' : ''; ?>"><?php echo $year; ?></textarea>
+                            <span class="invalid-feedback"><?php echo $year_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>phone</label>
-                            <input type="text" name="phone" class="form-control <?php echo (!empty($phone_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $phone; ?>">
-                            <span class="invalid-feedback"><?php echo $phone_err;?></span>
+                            <label>descripcion</label>
+                            <input type="text" name="descripcion" class="form-control <?php echo (!empty($descripcion_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $descripcion; ?>">
+                            <span class="invalid-feedback"><?php echo $descripcion_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">
