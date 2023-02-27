@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }  
 
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($year_err) && empty($descripcion_err)){
+    if(empty($name_err) && empty($year_err) && empty($descripcion_err) && empty($url_err)){
         // Prepare an insert statement
         $sql = "INSERT INTO peliculas (name, year, descripcion, url) VALUES (?, ?, ?, ?)";
          
