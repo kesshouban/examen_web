@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mi página de películas</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+  </head>
+  <body>
+    <div id="portada">
+      <h1>Mi página de películas</h1>
+      <p>¡Bienvenido/a! Aquí podrás encontrar todas las películas que quieras.</p>
+    </div>
+	<button href="createc.php">Clientes</a></button>
+<a href="createc.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
+<a href="createc.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+body {
+    background-color: grey;
+  }
+
+  #p1 {
+    display: block;
+    margin: 0 auto;
+  }
