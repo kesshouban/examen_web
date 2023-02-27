@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $year = $descripcion = "";
-$name_err = $year_err = $descripcion_err = "";
+$name = $year = $descripcion = $url = "";
+$name_err = $year_err = $descripcion_err = $url_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -33,7 +33,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $descripcion = $input_descripcion;
     }
-    
+
+    // Validate url
+    $input_url = trim($_POST["url"]);
+    if(empty($input_url)){
+        $url_err = "Please enter the url.";     
+    } else{
+        $url = $input_url;
+    }  
+
     // Check input errors before inserting in database
     if(empty($name_err) && empty($year_err) && empty($descripcion_err)){
         // Prepare an insert statement
@@ -102,6 +110,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label>Descripcion</label>
                             <input type="text" name="descripcion" class="form-control <?php echo (!empty($descripcion_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $descripcion; ?>">
                             <span class="invalid-feedback"><?php echo $descripcion_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>url</label>
+                            <input type="text" name="url" class="form-control <?php echo (!empty($url_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $url; ?>">
+                            <span class="invalid-feedback"><?php echo $url_err;?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="indexp.php" class="btn btn-secondary ml-2">Cancel</a>
