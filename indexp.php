@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .wrapper{
             width: 600px;
@@ -23,7 +24,7 @@
         });
     </script>
 </head>
-<body>
+<body class="d-flex h-100 text-center text-bg-dark text-white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -41,14 +42,14 @@
                     $sql = "SELECT * FROM peliculas";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
-                            echo '<table class="table table-bordered table-striped">';
+                            echo '<table class="table table-bordered table-dark table-striped">';
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>#</th>";
                                         echo "<th>Name</th>";
                                         echo "<th>Year</th>";
                                         echo "<th>Descripcion</th>";
-                                        echo "<th>Action</th>";
+					echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";

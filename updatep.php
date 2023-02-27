@@ -60,7 +60,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $param_descripcion = $descripcion;
             $param_url = $url;
             $param_id = $id;
-
+            
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records updated successfully. Redirect to landing page
@@ -136,6 +136,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     <meta charset="UTF-8">
     <title>Update Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .wrapper{
             width: 600px;
@@ -143,7 +144,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         }
     </style>
 </head>
-<body>
+<body class="d-flex h-100 text-bg-dark text-white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -167,7 +168,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="invalid-feedback"><?php echo $descripcion_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>url</label>
+                            <label>URL</label>
                             <input type="text" name="url" class="form-control <?php echo (!empty($url_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $url; ?>">
                             <span class="invalid-feedback"><?php echo $url_err;?></span>
                         </div>

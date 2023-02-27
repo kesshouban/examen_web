@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }  
 
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($year_err) && empty($descripcion_err) && empty($url_err)){
+    if(empty($name_err) && empty($year_err) && empty($descripcion_err)&& empty($url_err)){
         // Prepare an insert statement
         $sql = "INSERT INTO peliculas (name, year, descripcion, url) VALUES (?, ?, ?, ?)";
          
@@ -82,6 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Create Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .wrapper{
             width: 600px;
@@ -89,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     </style>
 </head>
-<body>
+<body class="d-flex h-100 text-bg-dark text-white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -113,7 +114,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="invalid-feedback"><?php echo $descripcion_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>url</label>
+                            <label>URL</label>
                             <input type="text" name="url" class="form-control <?php echo (!empty($url_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $url; ?>">
                             <span class="invalid-feedback"><?php echo $url_err;?></span>
                         </div>

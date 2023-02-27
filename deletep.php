@@ -45,6 +45,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     <meta charset="UTF-8">
     <title>Delete Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .wrapper{
             width: 600px;
@@ -52,7 +53,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         }
     </style>
 </head>
-<body>
+<body class="d-flex h-100 text-bg-dark text-white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">

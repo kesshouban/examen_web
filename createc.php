@@ -73,6 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Create Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .wrapper{
             width: 600px;
@@ -80,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     </style>
 </head>
-<body>
+<body class="d-flex h-100 text-bg-dark text-white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -104,7 +105,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="invalid-feedback"><?php echo $phone_err;?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
+                        <a href="indexc.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>
                 </div>
             </div>        
