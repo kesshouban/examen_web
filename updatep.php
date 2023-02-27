@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $year = $descripcion = "";
-$name_err = $year_err = $descripcion_err = "";
+$name = $year = $descripcion = $url = "";
+$name_err = $year_err = $descripcion_err = $url_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -104,6 +104,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $name = $row["name"];
                     $year = $row["year"];
                     $descripcion = $row["descripcion"];
+                    $url = $row["url"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
