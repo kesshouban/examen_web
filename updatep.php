@@ -48,17 +48,18 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($year_err) && empty($descripcion_err)){
         // Prepare an update statement
-        $sql = "UPDATE peliculas SET name=?, year=?, descripcion=? WHERE id=?";
+        $sql = "UPDATE peliculas SET name=?, year=?, descripcion=?, url=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_year, $param_descripcion, $param_id);
+            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_year, $param_descripcion, $param_id, $param_url);
             
             // Set parameters
             $param_name = $name;
             $param_year = $year;
             $param_descripcion = $descripcion;
             $param_id = $id;
+            $param_url = $url;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
