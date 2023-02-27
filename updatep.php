@@ -21,7 +21,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $name = $input_name;
     }
     
-    // Validate year year
+    // Validate year 
     $input_year = trim($_POST["year"]);
     if(empty($input_year)){
         $year_err = "Please enter an year.";     
@@ -37,7 +37,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     else{
         $descripcion = $input_descripcion;
     }
-    
+    // Validate url
+    $input_url = trim($_POST["url"]);
+    if(empty($input_url)){
+        $url_err = "Please enter the url.";     
+    } 
+    else{
+        $url = $input_url;
+    }    
     // Check input errors before inserting in database
     if(empty($name_err) && empty($year_err) && empty($descripcion_err)){
         // Prepare an update statement
@@ -156,6 +163,11 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <label>Descripcion</label>
                             <input type="text" name="descripcion" class="form-control <?php echo (!empty($descripcion_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $descripcion; ?>">
                             <span class="invalid-feedback"><?php echo $descripcion_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>url</label>
+                            <input type="text" name="url" class="form-control <?php echo (!empty($url_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $url; ?>">
+                            <span class="invalid-feedback"><?php echo $url_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">
