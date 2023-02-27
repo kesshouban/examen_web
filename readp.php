@@ -27,6 +27,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $name = $row["name"];
                 $year = $row["year"];
                 $descripcion = $row["descripcion"];
+                $url = $row["url"];
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
                 header("location: errorp.php");
@@ -81,7 +82,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <label>Descripcion</label>
                         <p><b><?php echo $row["descripcion"]; ?></b></p>
                     </div>
-                    <p><a href="" class="btn btn-primary">Watch</a></p>
+                    <p><a href="<?php echo $row["url"]; ?>" class="btn btn-primary">Watch</a></p>
 		    <p><a href="indexp.php" class="btn btn-primary">Back</a></p>
                 </div>
             </div>        
