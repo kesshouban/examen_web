@@ -45,16 +45,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($year_err) && empty($descripcion_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO peliculas (name, year, descripcion) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO peliculas (name, year, descripcion, url) VALUES (?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_year, $param_descripcion);
+            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_year, $param_descripcion, $param_url);
             
             // Set parameters
             $param_name = $name;
             $param_year = $year;
             $param_descripcion = $descripcion;
+            $param_url = $url;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
